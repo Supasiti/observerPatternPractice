@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from subject import AbSubject, ConcreteSubject
 
 class AbObserver(ABC):
     '''
@@ -8,26 +7,35 @@ class AbObserver(ABC):
     '''    
     
     @abstractmethod
-    def execute_when_notified(self, subject: ConcreteSubject) -> None:
+    def execute_when_notified(self, state: int) -> None:
         pass
 
+    @abstractmethod
+    def __str__(self):
+        pass
 
 class ConcreteObserverA(AbObserver):
     '''
         implement AbObserver
     '''
     
-    def execute_when_notified(self, subject: ConcreteSubject) -> None:
-        print('I\'m notified, and now I\'m going to do something useful.')
-        if subject.state >= 5:
-            print('I\'m lucky today')
+    def execute_when_notified(self, state) -> None:
+        print('Observer A: I\'m notified')
+        if state >= 5:
+            print('Observer A: I\'m lucky today')
+
+    def __str__(self):
+        return 'Observer A'
 
 class ConcreteObserverB(AbObserver):
     '''
         implement AbObserver
     '''
     
-    def execute_when_notified(self, subject: ConcreteSubject) -> None:
-        print('I\'m notified, and now I\'m going to do something useful.')
-        if subject.state <= 6:
-            print('Weather is bad today!')
+    def execute_when_notified(self, state) -> None:
+        print('Observer B: I\'m notified.')
+        if state <= 6:
+            print('Observer B: Weather is bad today!')
+    
+    def __str__(self):
+        return 'Observer B'

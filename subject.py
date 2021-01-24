@@ -31,25 +31,20 @@ class ConcreteSubject(AbSubject):
     __observers: list[AbObserver] = []
 
     def subscribe(self, observer: AbObserver) -> None:
-        print('subscribe observer to the list.')
+        print('Subject: Subscribe observer to the list.')
         self.__observers.append(observer)
 
     def unsubscribe(self, observer: AbObserver) -> None:
-        print('unsubscibe from the list.')
+        print('Subject: Unsubscibe %s from the list.' % observer.__str__())
         self.__observers.remove(observer)
 
     def notify(self) -> None:
-        print('notify all the observers in the list.')
+        print('Subject: Notify all the observers in the list.')
         for observer in self.__observers:
-            observer.execute_when_notified(self)
-
-    @property
-    def state(self):
-        return self.__state
-
+            observer.execute_when_notified(self.__state)
+      
     def some_business_logic(self):
         print("\nSubject: I'm doing something important.")
         self.__state = randrange(0, 10)
-        print('New state: %d' % self.__state)
+        print('    New state: %d' % self.__state)
         self.notify()
-
