@@ -35,7 +35,7 @@ class ConcreteSubject(AbSubject):
         self.__observers.append(observer)
 
     def unsubscribe(self, observer: AbObserver) -> None:
-        print('Subject: Unsubscibe %s from the list.' % observer.__str__())
+        print('Subject: Unsubscibe %s from the list.' % observer)
         self.__observers.remove(observer)
 
     def notify(self) -> None:

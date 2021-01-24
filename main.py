@@ -20,3 +20,5 @@ if __name__ == '__main__':
     # subject's state changes
     subject.some_business_logic()
     subject.some_business_logic()
+
+    
